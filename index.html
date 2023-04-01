@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+
+  <title>Frontend Mentor | Results summary component</title>
+
+  <style>
+    /*mobile-first view*/
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-family: 'Hanken Grotesk', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+    }
+    #container{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    #result-card{
+      background-image: linear-gradient(#7857ff, #2e2be9);
+      /*background-image: linear-gradient(to right, red , yellow);*/
+      text-align: center;
+      color: white;
+      padding: 15px 15px;
+      min-height: 250px;
+      border-radius: 0px 0px 25px 25px;
+    }
+    #result-card .title{
+      padding: 1px;
+      opacity: 0.7;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+    }  
+    #result-card .score{
+      position: relative;
+      padding: 35px;
+      border-radius: 50%;
+      width: 125px;
+      height: 125px;
+      background-image: linear-gradient(hsla(256, 72%, 46%, 1)   ,hsla(241, 72%, 46%, 0));
+      margin: auto;
+    }
+    #result-card .num1{
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+    #result-card .num2{
+      position: absolute;
+      font-size: 0.8rem;
+      right: 35%;
+      bottom: 15%;
+      opacity: 0.5;
+    }
+    #result-card .text{
+      font-weight: 700 ;
+      font-size: 1.2rem;
+      margin-top: 25px;
+    }
+    #result-card .text2{
+      padding: 10px 60px;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    /**/
+    #summary-card{
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    #summary-card > p{  /*Summary*/
+      padding: 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-left: 15px;
+      padding-bottom: 0px;
+    }
+    #summary-card > div{  /*each sub card*/
+      margin: 1.5% 10% 1.5%;
+      border-radius: 10px;
+      position: relative;
+    }
+    #summary-card .reaction{
+      background-color: hsla(0, 100%, 67%, 0.1);
+    }
+    #summary-card .memory{
+      background-color: hsla(39, 100%, 56%, 0.1);
+    }
+    #summary-card .verbal{
+      background-color: hsla(166, 100%, 37%, 0.1);
+    }
+    #summary-card .visual{
+      background-color: hsla(234, 85%, 45%, 0.1);
+    }
+    .reaction p:first-child{
+      color: hsl(0, 100%, 67%);
+    }
+    .memory p:first-child{
+      color: hsl(39, 100%, 56%);
+    }
+    .verbal p:first-child{
+      color: hsl(166, 100%, 37%);
+    }
+    .visual p:first-child{
+      color: hsl(234, 85%, 45%);
+    }
+    #summary-card div > p{
+      display: inline-block;
+    }
+    #summary-card div > p:first-child{
+      margin-left: 10%;
+    }
+    #summary-card div > p:last-child{
+      position: absolute ;
+      right: 15%;
+      color: hsl(224, 30%, 27%) ;
+      opacity: 0.7;
+    }
+    div p:last-child > span{
+      color:black;
+      opacity: 1.0;
+      font-weight: 800;
+    }
+    button{
+      background-color: hsl(224, 30%, 27%);
+      margin: 5% 10% 5%;
+      border-radius: 25px;
+      font-weight: 700;
+      border: none;
+    }
+    button p{
+      font-size: 0.9rem;
+      color:white;
+      font-weight: 700;
+    }
+    button:hover{
+      background-image: linear-gradient(#7857ff, #2e2be9);
+    }
+
+    button.user{
+      display: none;
+    }
+
+    /*dekstop view */
+    @media (min-width:576px){
+      #container{
+        width : 800px;
+        height : 500px;
+        flex-direction: row;
+        margin: auto;
+        margin-top: 10px;
+      }
+      #result-card{
+        border-radius: 25px;
+        ;
+      }
+      #summary-card{
+        border-radius: 25px;
+        box-shadow: 3px 1px 17px 2px rgba(0,0,0,0.75);
+      }
+      #result-card,#summary-card{
+        width: 50%;
+      }
+      #result-card .title{
+        font-size: 1.5rem;
+        margin-top: 5%;
+      }
+      #result-card .score{
+        position: relative;
+        padding: 25%;
+        border-radius: 50%;
+        background-image: linear-gradient(hsla(256, 72%, 46%, 1)   ,hsla(241, 72%, 46%, 0));
+        margin: auto;
+        margin-top: 5%;
+      }
+      #result-card .text{
+        font-size: 2.0rem;
+        margin-top: 5%;
+      }
+      #result-card .text2{
+        font-size: 1.1rem;
+        margin-top: 5%;
+      }
+      #result-card .num1{
+        position: absolute;
+        top: 20%;
+        left: 33.33%;
+        font-size: 4rem;
+        font-weight: 800;
+      }
+      #result-card .num2{
+        position: absolute;
+        font-size: 1.2rem;
+        width: 100%;
+        left: 3%;
+        bottom: 20%;
+        opacity: 0.5;
+      }
+      /*3 users button to toggle marks*/
+      button.user{
+        display: inline-block;
+        width: 150px;
+        padding: 0;
+        margin: 10px;
+      }
+      button.user > p{
+        margin: 0;
+        padding: 24px;
+      }
+      #toggle{
+        margin-left: 500px;
+      }
+      
+    }
+  </style>
+
+  <script>
+    function updateUser(x){
+      let mark1 = 60 + 2*x;
+      let mark2 = 70 + 1*x;
+      let mark3 = 80 - 3*x;
+      let mark4 = 90 - 5*x;
+      let avg = parseInt( (mark1 + mark2 + mark3 + mark4) / 4);
+
+
+      let element1 = document.querySelector(".marks");
+      element1.innerHTML = mark1;
+      let element2 = document.querySelector(".marks2");
+      element2.innerHTML = mark2;
+      let element3 = document.querySelector(".marks3");
+      element3.innerHTML = mark3;
+      let element4 = document.querySelector(".marks4");
+      element4.innerHTML = mark4;
+      let element5 = document.querySelector(".num1");
+      element5.innerHTML = avg;
+    }
+
+  </script>
+</head>
+<body>
+  <div id="container">
+
+    <div id="result-card">
+      <div class="title">Your Result</div>
+      <div class="score">
+        <span class="num1">76</span>
+        <span class="num2">of 100</span>
+      </div>
+      <div class="text">Great</div>
+      <div class="text2">You scored higher than 65% of the people who have taken these tests.</div>
+    </div>
+    <div id="summary-card">
+      <p>Summary</p>
+      <div class="reaction">
+        <p><img src="./assets/images/icon-reaction.svg" alt="reaction.svg">  Reaction</p>
+        <p><span class="marks">80</span> / 100</p>
+      </div>
+      <div class="memory">
+        <p><img src="./assets/images/icon-memory.svg" alt="reaction.svg">   Memory</p>
+        <p><span class="marks2">92</span> / 100</p>
+      </div>
+      <div class="verbal">
+        <p><img src="./assets/images/icon-verbal.svg" alt="reaction.svg">   Verbal</p>
+        <p><span class="marks3">61</span> / 100</p>
+      </div>
+      <div class="visual">
+        <p><img src="./assets/images/icon-visual.svg" alt="reaction.svg">   Visual</p>
+        <p><span class="marks4">72</span> / 100</p>
+      </div>
+      <button><p>Continue</p></button>
+    </div>
+
+  </div>
+
+  <div id="toggle">
+    <button class="user" onclick="updateUser(1)"><p>User 1</p></button>
+    <button class="user" onclick="updateUser(2)"><p>User 2</p></button>
+    <button class="user" onclick="updateUser(3)"><p>User 3</p></button>
+
+  </div>
+
+</body>
+</html>
+
